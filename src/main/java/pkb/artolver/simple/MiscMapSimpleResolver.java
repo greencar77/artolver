@@ -6,5 +6,6 @@ public class MiscMapSimpleResolver extends MapSimpleResolver {
 	protected void initMap() {
 		map("ma.glasnost.orika/orika-core", "ma.glasnost.orika.");
 		map("org.mockito/mockito-core", "org.mockito.");
+		map("org.reflections/reflections", "org.reflections.");
 	}
 }
