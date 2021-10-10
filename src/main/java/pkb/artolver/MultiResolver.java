@@ -2,6 +2,7 @@ package pkb.artolver;
 
 import static java.util.stream.Collectors.groupingBy;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -20,7 +21,7 @@ public class MultiResolver {
 				.collect(groupingBy(t -> wrap(batchResolver.resolve(t))));
 	}
 
-	public Map<String, List<SolverJavaType>> resolveTypes(Set<? extends SolverJavaType> types) {
+	public Map<String, List<SolverJavaType>> resolveTypes(Collection<? extends SolverJavaType> types) {
 		return types.stream()
 				.collect(groupingBy(t -> wrap(batchResolver.resolve(t.getType()))));
 	}
