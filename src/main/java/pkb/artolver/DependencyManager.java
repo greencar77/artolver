@@ -2,6 +2,7 @@ package pkb.artolver;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
@@ -11,12 +12,17 @@ import java.util.stream.Collectors;
 import org.apache.commons.io.FileUtils;
 
 import pkb.artolver.batch.AllBatchResolver;
+import pkb.artolver.simple.SimpleResolver;
 
 public class DependencyManager {
 	private static final String OUTPUT = "target/report/";
 
-	public Map<String, List<SolverJavaType>> getDependencyMap(Collection<? extends SolverJavaType> javaTypes) {
+	public Map<String, List<SolverJavaType>> getDependencyMap(Collection<? extends SolverJavaType> javaTypes, SimpleResolver... additionalResolvers) {
 		AllBatchResolver batchResolver = new AllBatchResolver(false);
+		if (additionalResolvers != null) {
+			Arrays.stream(additionalResolvers)
+					.forEach(ar -> batchResolver.add(ar));
+		}
 		DependencyGrouper dependencyGrouper = new DependencyGrouper(batchResolver);
 		return dependencyGrouper.resolveTypes(javaTypes);
 	}

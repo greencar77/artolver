@@ -2,6 +2,7 @@ package pkb.artolver.batch;
 
 import pkb.artolver.Resolver;
 import pkb.artolver.ResolverNode;
+import pkb.artolver.simple.SimpleResolver;
 
 public abstract class BatchResolver implements Resolver {
 
@@ -21,5 +22,9 @@ public abstract class BatchResolver implements Resolver {
 	@Override
 	public String resolve(String typeName) {
 		return root.resolve(typeName);
+	}
+
+	public void add(SimpleResolver resolver) {
+		root.append(resolver);
 	}
 }
