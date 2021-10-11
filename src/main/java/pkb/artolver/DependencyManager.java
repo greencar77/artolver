@@ -17,8 +17,8 @@ public class DependencyManager {
 
 	public Map<String, List<SolverJavaType>> getDependencyMap(Collection<? extends SolverJavaType> javaTypes) {
 		AllBatchResolver batchResolver = new AllBatchResolver(false);
-		MultiResolver multiResolver = new MultiResolver(batchResolver);
-		return multiResolver.resolveTypes(javaTypes);
+		DependencyGrouper dependencyGrouper = new DependencyGrouper(batchResolver);
+		return dependencyGrouper.resolveTypes(javaTypes);
 	}
 
 	public void outputDepContainers(Map<String, List<SolverJavaType>> map) {

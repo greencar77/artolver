@@ -9,10 +9,10 @@ import java.util.Set;
 
 import pkb.artolver.batch.BatchResolver;
 
-public class MultiResolver {
+public class DependencyGrouper {
 	private BatchResolver batchResolver;
 
-	public MultiResolver(BatchResolver batchResolver) {
+	public DependencyGrouper(BatchResolver batchResolver) {
 		this.batchResolver = batchResolver;
 	}
 

@@ -11,12 +11,12 @@ import org.junit.jupiter.api.Test;
 
 import pkb.artolver.batch.AllBatchResolver;
 
-class MultiResolverTest {
-	private final MultiResolver multiResolver;
+class DependencyGrouperTest {
+	private final DependencyGrouper dependencyGrouper;
 
-	public MultiResolverTest() {
+	public DependencyGrouperTest() {
 		AllBatchResolver batchResolver = new AllBatchResolver(true);
-		this.multiResolver = new MultiResolver(batchResolver);
+		this.dependencyGrouper = new DependencyGrouper(batchResolver);
 	}
 
 	@Test
@@ -26,7 +26,7 @@ class MultiResolverTest {
 		input.add("java.lang.Thread");
 		input.add("NOTEXISTING");
 
-		Map<String, List<String>> result = multiResolver.resolve(input);
+		Map<String, List<String>> result = dependencyGrouper.resolve(input);
 		assertEquals(3, result.keySet().size());
 	}
 }
