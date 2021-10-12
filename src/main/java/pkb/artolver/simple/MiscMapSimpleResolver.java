@@ -12,5 +12,9 @@ public class MiscMapSimpleResolver extends MapSimpleResolver {
 		map("com.fasterxml.jackson.core/jackson-annotations", "com.fasterxml.jackson.annotation.");
 		map("com.fasterxml.jackson.core/jackson-core", "com.fasterxml.jackson.core.");
 		map("com.fasterxml.jackson.core/jackson-databind", "com.fasterxml.jackson.databind.");
+		map("com.github.dozermapper/dozer-core", "com.github.dozermapper.core.");
+		map("io.projectreactor/reactor-core", "reactor.util.function.");
+		map("org.hamcrest/hamcrest", "org.hamcrest.");
+		map("org.slf4j/slf4j-api", "org.slf4j.");
 	}
 }
