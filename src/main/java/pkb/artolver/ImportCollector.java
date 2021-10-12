@@ -10,10 +10,20 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.apache.commons.io.FileUtils;
 
 public class ImportCollector {
+	public List<String> collectImportsFolderSorted(File folder, Predicate<String> ignoreMatch) {
+		List<String> result = collectImportsFolder(folder).stream()
+				.filter(s -> !ignoreMatch.test(s))
+				.collect(Collectors.toList());
+		Collections.sort(result);
+		return result;
+	}
+
 	public List<String> collectImportsFolderSorted(File folder) {
 		List<String> result = new ArrayList<>(collectImportsFolder(folder));
 		Collections.sort(result);
