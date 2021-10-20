@@ -1,13 +1,16 @@
 ---
 name: JDK
+id: GYT14HCI
 dependencies:
   - JDK
 ---
 name: Snake Yaml
+id: DKQPN6ZL
 dependencies:
   - org.yaml/snakeyaml
 ---
 name: Apache Commons
+id: SL1E86DT
 dependencies:
   - commons-codec/commons-codec
   - commons-collections/commons-collections
@@ -16,17 +19,20 @@ dependencies:
   - commons-lang/commons-lang
 ---
 name: OkHttp
+id: JDP766AV
 dependencies:
   - com.squareup.okhttp3/logging-interceptor
   - com.squareup.okhttp3/mockwebserver
   - com.squareup.okhttp3/okhttp
 ---
 name: Spring
+id: FMQ0EXQC
 dependencies:
   - org.springframework/spring-boot
   - org.springframework/spring-web
 ---
 name: JUnit 5
+id: AAEEOYA9
 dependencies:
   - org.junit.jupiter/junit-jupiter-params
   - org.junit.jupiter/junit-jupiter-api

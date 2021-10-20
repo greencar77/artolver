@@ -16,7 +16,7 @@ class DependencyManagerTest {
 	@Test
 	void test() {
 		Map<String, ProjectYml> result = manager.getProjectSets();
-		assertEquals(3, result.size());
+		assertEquals(14, result.size());
 	}
 
 	@Test

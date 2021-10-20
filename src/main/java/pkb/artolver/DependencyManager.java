@@ -64,6 +64,12 @@ public class DependencyManager {
 				.map(x -> (ProjectYml) x)
 				.collect(Collectors.toList());
 
+		list.forEach(p -> {
+			if (p.getId() == null) {
+				throw new RuntimeException(p.getName() + " has no Id");
+			}
+		});
+
 		return list.stream()
 				.flatMap(p -> p.getDependencies().stream()
 						.collect(Collectors.toMap(d -> d, d -> p))
