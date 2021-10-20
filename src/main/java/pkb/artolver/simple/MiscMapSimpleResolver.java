@@ -16,5 +16,19 @@ public class MiscMapSimpleResolver extends MapSimpleResolver {
 		map("io.projectreactor/reactor-core", "reactor.util.function.");
 		map("org.hamcrest/hamcrest", "org.hamcrest.");
 		map("org.slf4j/slf4j-api", "org.slf4j.");
+		map("com.google.guava/guava", "com.google.common.io.");
+		map("com.google.code.gson/gson", "com.google.gson.");
+		map("com.googlecode.libphonenumber/libphonenumber", "com.google.i18n.phonenumbers.");
+		map("io.undertow/undertow-core", "io.undertow.server."); //and other
+		map("org.jetbrains.kotlin/kotlin-stdlib", "kotlin.Pair");
+		map("net.javacrumbs.json-unit/json-unit", "net.javacrumbs.jsonunit.");
+		map("com.squareup.okio/okio", "okio.");
+		map("org.yaml/snakeyaml", "org.yaml.snakeyaml.");
+
+		map("commons-codec/commons-codec", "org.apache.commons.codec.");
+		map("commons-collections/commons-collections", "org.apache.commons.collections.");
+		map("commons-httpclient/commons-httpclient", "org.apache.commons.httpclient.");
+		map("commons-io/commons-io", "org.apache.commons.io.");
+		map("commons-lang/commons-lang", "org.apache.commons.lang.");
 	}
 }
