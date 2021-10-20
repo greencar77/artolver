@@ -17,7 +17,7 @@ public class MapTest {
 		File folder = new File("");
 		List<String> imports = collector.collectImportsFolderSorted(folder);
 		List<SolverJavaType> javaTypes = imports.stream()
-				.map(s -> new SolverJavaTypeImpl(s))
+				.map(SolverJavaTypeImpl::new)
 				.collect(Collectors.toList());
 		Map<String, List<SolverJavaType>> result = dependencyManager.getDependencyMap(javaTypes);
 		dependencyManager.outputDepList(result);
@@ -30,7 +30,7 @@ public class MapTest {
 		File folder = new File("");
 		List<String> imports = collector.collectImportsFolderSorted(folder);
 		List<SolverJavaType> javaTypes = imports.stream()
-				.map(s -> new SolverJavaTypeImpl(s))
+				.map(SolverJavaTypeImpl::new)
 				.collect(Collectors.toList());
 		Map<String, List<SolverJavaType>> result = dependencyManager.getDependencyMap(javaTypes);
 		Map<String, Map<String, List<SolverJavaType>>> res2 = dependencyManager.getProjectMap(result);

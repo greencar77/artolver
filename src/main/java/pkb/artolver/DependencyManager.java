@@ -16,7 +16,9 @@ import org.apache.commons.io.FileUtils;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
+import com.google.gson.Gson;
 import pkb.artolver.batch.AllBatchResolver;
+import pkb.artolver.json.ProjectJson;
 import pkb.artolver.simple.SimpleResolver;
 import pkb.artolver.yml.ProjectYml;
 
@@ -116,5 +118,19 @@ public class DependencyManager {
 				.sorted(Comparator.comparing(Map.Entry::getKey))
 				.map(entry -> "    " + entry.getKey() + " " + "(" + entry.getValue().size() + ")")
 				.collect(Collectors.joining("\n"));
+	}
+
+	public String toJson(Map<String, Map<String, List<SolverJavaType>>> map) {
+		List<ProjectJson> json = map.entrySet().stream()
+				.sorted(Comparator.comparing(Map.Entry::getKey))
+				.map(e -> {
+					ProjectJson result = new ProjectJson();
+					result.setName(e.getKey());
+					return result;
+				})
+				.collect(Collectors.toList());
+
+		Gson gson = new Gson();
+		return gson.toJson(json);
 	}
 }
