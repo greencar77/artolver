@@ -1,0 +1,32 @@
+---
+name: JDK
+dependencies:
+  - JDK
+---
+name: Snake Yaml
+dependencies:
+  - org.yaml/snakeyaml
+---
+name: Apache Commons
+dependencies:
+  - commons-codec/commons-codec
+  - commons-collections/commons-collections
+  - commons-httpclient/commons-httpclient
+  - commons-io/commons-io
+  - commons-lang/commons-lang
+---
+name: OkHttp
+dependencies:
+  - com.squareup.okhttp3/logging-interceptor
+  - com.squareup.okhttp3/mockwebserver
+  - com.squareup.okhttp3/okhttp
+---
+name: Spring
+dependencies:
+  - org.springframework/spring-boot
+  - org.springframework/spring-web
+---
+name: JUnit 5
+dependencies:
+  - org.junit.jupiter/junit-jupiter-params
+  - org.junit.jupiter/junit-jupiter-api
