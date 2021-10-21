@@ -1,29 +1,22 @@
 package pkb.artolver;
 
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import org.apache.commons.io.FileUtils;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
-import com.google.gson.Gson;
 import pkb.artolver.batch.AllBatchResolver;
-import pkb.artolver.json.ProjectJson;
 import pkb.artolver.simple.SimpleResolver;
 import pkb.artolver.yml.ProjectYml;
 
 public class DependencyManager {
-	private static final String OUTPUT = "target/report/";
 
 	public Map<String, List<SolverJavaType>> getDependencyMap(Collection<? extends SolverJavaType> javaTypes, SimpleResolver... additionalResolvers) {
 		AllBatchResolver batchResolver = new AllBatchResolver(false);
@@ -76,67 +69,5 @@ public class DependencyManager {
 						.entrySet().stream()
 				)
 				.collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue()));
-	}
-
-	public void outputDepContainers(Map<String, List<SolverJavaType>> map) {
-		String result = map.entrySet().stream()
-				.sorted(Comparator.comparing(Map.Entry::getKey))
-				.map(entry -> entry.getKey() + " " + "(" + entry.getValue().size() + ")" + "\n"
-						+ entry.getValue().stream()
-						.map(v -> "    " + v.getType())
-						.collect(Collectors.joining("\n"))
-				)
-				.collect(Collectors.joining("\n"));
-		try {
-			FileUtils.write(new File(OUTPUT + "depcontainers.txt"), result);
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	public void outputDepList(Map<String, List<SolverJavaType>> map) {
-		String result = map.entrySet().stream()
-				.sorted(Comparator.comparing(Map.Entry::getKey))
-				.map(entry -> entry.getKey() + " " + "(" + entry.getValue().size() + ")")
-				.collect(Collectors.joining("\n"));
-		try {
-			FileUtils.write(new File(OUTPUT + "deplist.txt"), result);
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	public void outputProjList(Map<String, Map<String, List<SolverJavaType>>> map) {
-		String result = map.entrySet().stream()
-				.sorted(Comparator.comparing(Map.Entry::getKey))
-				.map(projEntry -> projEntry.getKey() + " " + "(" + projEntry.getValue().size() + ")" + "\n"
-					+ dep(projEntry.getValue()))
-				.collect(Collectors.joining("\n"));
-		try {
-			FileUtils.write(new File(OUTPUT + "projlist.txt"), result);
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	private String dep(Map<String, List<SolverJavaType>> input) {
-		return input.entrySet().stream()
-				.sorted(Comparator.comparing(Map.Entry::getKey))
-				.map(entry -> "    " + entry.getKey() + " " + "(" + entry.getValue().size() + ")")
-				.collect(Collectors.joining("\n"));
-	}
-
-	public String toJson(Map<String, Map<String, List<SolverJavaType>>> map) {
-		List<ProjectJson> json = map.entrySet().stream()
-				.sorted(Comparator.comparing(Map.Entry::getKey))
-				.map(e -> {
-					ProjectJson result = new ProjectJson();
-					result.setName(e.getKey());
-					return result;
-				})
-				.collect(Collectors.toList());
-
-		Gson gson = new Gson();
-		return gson.toJson(json);
 	}
 }

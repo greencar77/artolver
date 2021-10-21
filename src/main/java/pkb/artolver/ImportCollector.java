@@ -17,6 +17,9 @@ import org.apache.commons.io.FileUtils;
 
 public class ImportCollector {
 	public List<String> collectImportsFolderSorted(File folder, Predicate<String> ignoreMatch) {
+		if (ignoreMatch == null) {
+			return collectImportsFolderSorted(folder);
+		}
 		List<String> result = collectImportsFolder(folder).stream()
 				.filter(s -> !ignoreMatch.test(s))
 				.collect(Collectors.toList());

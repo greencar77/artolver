@@ -13,10 +13,10 @@ class ImportCollectorTest {
 
 	@Test
 	void test() {
-		File folder = new File("");
+		File folder = new File(".");
 		List<String> imports = collector.collectImportsFolderSorted(folder);
 		try {
-			FileUtils.writeLines(new File("result.txt"), imports);
+			FileUtils.writeLines(new File("target/result.txt"), imports);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
