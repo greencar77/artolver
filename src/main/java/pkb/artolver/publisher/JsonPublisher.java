@@ -13,7 +13,7 @@ import pkb.artolver.json.ProjectJson;
 public class JsonPublisher implements Publisher {
 
 	@Override
-	public void outputProjects(Map<String, Map<String, List<SolverJavaType>>> map) {
+	public void outputProjects(Map<String, Map<String, List<SolverJavaType>>> map, String folder) {
 		List<ProjectJson> json = map.entrySet().stream()
 				.sorted(Comparator.comparing(Map.Entry::getKey))
 				.map(e -> {
@@ -24,6 +24,6 @@ public class JsonPublisher implements Publisher {
 				.collect(Collectors.toList());
 
 		Gson gson = new Gson();
-		FileUtils.write(OUTPUT + "projects.js", "const proj = " + gson.toJson(json) + ";");
+		FileUtils.write(OUTPUT + folder + "projects.js", "const proj = " + gson.toJson(json) + ";");
 	}
 }

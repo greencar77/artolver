@@ -1,6 +1,7 @@
 package pkb.artolver;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -13,10 +14,12 @@ public class MainManager {
 	private String rootPath;
 	private DependencyManager dependencyManager = new DependencyManager();
 	private Predicate<String> ignoreMatch;
+	private String folder;
 
-	public MainManager(Publisher publisher, String rootPath, Predicate<String> ignoreMatch) {
+	public MainManager(Publisher publisher, String rootPath, String folder, Predicate<String> ignoreMatch) {
 		this.publisher = publisher;
 		this.rootPath = rootPath;
+		this.folder = folder;
 		this.ignoreMatch = ignoreMatch;
 	}
 
@@ -40,6 +43,18 @@ public class MainManager {
 //		publisher.outputDepList(result);
 //		publisher.outputDepContainers(result);
 		Map<String, Map<String, List<SolverJavaType>>> res2 = dependencyManager.getProjectMap(result);
-		publisher.outputProjects(res2);
+		publisher.outputProjects(res2, this.folder);
+
+//		copyReportFiles(Publisher.OUTPUT + folder);
+	}
+
+	private void copyReportFiles(String targetPath) {
+//		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("report/index.html");
+		try {
+			org.apache.commons.io.FileUtils.copyFile(new File("src/main/resources/report/index.html"), new File(targetPath + "index.html"));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
 	}
 }

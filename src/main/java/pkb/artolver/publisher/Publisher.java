@@ -8,5 +8,5 @@ import pkb.artolver.SolverJavaType;
 public interface Publisher {
 	String OUTPUT = "target/report/";
 
-	void outputProjects(Map<String, Map<String, List<SolverJavaType>>> map);
+	void outputProjects(Map<String, Map<String, List<SolverJavaType>>> map, String folder);
 }

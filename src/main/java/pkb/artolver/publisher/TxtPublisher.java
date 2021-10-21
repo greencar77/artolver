@@ -11,13 +11,13 @@ import pkb.artolver.SolverJavaType;
 public class TxtPublisher implements Publisher {
 
 	@Override
-	public void outputProjects(Map<String, Map<String, List<SolverJavaType>>> map) {
+	public void outputProjects(Map<String, Map<String, List<SolverJavaType>>> map, String folder) {
 		String result = map.entrySet().stream()
 				.sorted(Comparator.comparing(Map.Entry::getKey))
 				.map(projEntry -> projEntry.getKey() + " " + "(" + projEntry.getValue().size() + ")" + "\n"
 						+ dep(projEntry.getValue()))
 				.collect(Collectors.joining("\n"));
-		FileUtils.write(OUTPUT + "projects.txt", result);
+		FileUtils.write(OUTPUT + folder + "projects.txt", result);
 	}
 
 	private String dep(Map<String, List<SolverJavaType>> input) {
