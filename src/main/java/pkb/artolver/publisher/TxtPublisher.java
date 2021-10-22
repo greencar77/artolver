@@ -27,23 +27,25 @@ public class TxtPublisher implements Publisher {
 				.collect(Collectors.joining("\n"));
 	}
 
-	public void outputDepContainers(Map<String, List<SolverJavaType>> map) {
-		String result = map.entrySet().stream()
-				.sorted(Comparator.comparing(Map.Entry::getKey))
-				.map(entry -> entry.getKey() + " " + "(" + entry.getValue().size() + ")" + "\n"
-						+ entry.getValue().stream()
-						.map(v -> "    " + v.getType())
-						.collect(Collectors.joining("\n"))
-				)
-				.collect(Collectors.joining("\n"));
-		FileUtils.write(OUTPUT + "depcontainers.txt", result);
-	}
-
-	public void outputDepList(Map<String, List<SolverJavaType>> map) {
-		String result = map.entrySet().stream()
-				.sorted(Comparator.comparing(Map.Entry::getKey))
-				.map(entry -> entry.getKey() + " " + "(" + entry.getValue().size() + ")")
-				.collect(Collectors.joining("\n"));
-		FileUtils.write(OUTPUT + "deplist.txt", result);
+	@Override
+	public void outputDependencies(Map<String, List<SolverJavaType>> map, String folder, boolean compact) {
+		String result;
+		if (compact) {
+			result = map.entrySet().stream()
+					.sorted(Comparator.comparing(Map.Entry::getKey))
+					.map(entry -> entry.getKey() + " " + "(" + entry.getValue().size() + ")")
+					.collect(Collectors.joining("\n"));
+			FileUtils.write(OUTPUT + folder + "dependencies_short.txt", result);
+		} else {
+			result = map.entrySet().stream()
+					.sorted(Comparator.comparing(Map.Entry::getKey))
+					.map(entry -> entry.getKey() + " " + "(" + entry.getValue().size() + ")" + "\n"
+							+ entry.getValue().stream()
+							.map(v -> "    " + v.getType())
+							.collect(Collectors.joining("\n"))
+					)
+					.collect(Collectors.joining("\n"));
+			FileUtils.write(OUTPUT + folder + "dependencies.txt", result);
+		}
 	}
 }

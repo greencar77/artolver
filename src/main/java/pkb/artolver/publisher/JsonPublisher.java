@@ -27,4 +27,9 @@ public class JsonPublisher implements Publisher {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		FileUtils.write(OUTPUT + folder + "projects.js", "const proj = " + gson.toJson(json) + ";");
 	}
+
+	@Override
+	public void outputDependencies(Map<String, List<SolverJavaType>> map, String folder, boolean compact) {
+
+	}
 }

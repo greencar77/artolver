@@ -9,4 +9,5 @@ public interface Publisher {
 	String OUTPUT = "target/report/";
 
 	void outputProjects(Map<String, Map<String, List<SolverJavaType>>> map, String folder);
+	void outputDependencies(Map<String, List<SolverJavaType>> map, String folder, boolean compact);
 }

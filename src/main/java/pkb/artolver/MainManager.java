@@ -40,9 +40,11 @@ public class MainManager {
 				.map(SolverJavaTypeImpl::new)
 				.collect(Collectors.toList());
 		Map<String, List<SolverJavaType>> result = dependencyManager.getDependencyMap(javaTypes);
-//		publisher.outputDepList(result);
-//		publisher.outputDepContainers(result);
+		System.out.println("Dependencies: " + result.keySet().size());
+		publisher.outputDependencies(result, this.folder, true);
+		publisher.outputDependencies(result, this.folder, false);
 		Map<String, Map<String, List<SolverJavaType>>> res2 = dependencyManager.getProjectMap(result);
+		System.out.println("Projects: " + res2.keySet().size());
 		publisher.outputProjects(res2, this.folder);
 
 //		copyReportFiles(Publisher.OUTPUT + folder);
