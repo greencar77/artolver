@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import pkb.artolver.FileUtils;
 import pkb.artolver.SolverJavaType;
 import pkb.artolver.json.ProjectJson;
@@ -23,7 +24,7 @@ public class JsonPublisher implements Publisher {
 				})
 				.collect(Collectors.toList());
 
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		FileUtils.write(OUTPUT + folder + "projects.js", "const proj = " + gson.toJson(json) + ";");
 	}
 }
