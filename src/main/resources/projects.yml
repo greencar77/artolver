@@ -18,6 +18,11 @@ dependencies:
   - commons-io/commons-io
   - commons-lang/commons-lang
 ---
+name: Apache Commons 3
+id: X5LUUOMS
+dependencies:
+  - org.apache.commons/commons-lang3
+---
 name: OkHttp
 id: JDP766AV
 dependencies:
@@ -36,3 +41,8 @@ id: AAEEOYA9
 dependencies:
   - org.junit.jupiter/junit-jupiter-params
   - org.junit.jupiter/junit-jupiter-api
+---
+name: Dom4j
+id: BVWVWBJ2
+dependencies:
+  - org.dom4j/dom4j

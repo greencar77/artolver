@@ -24,11 +24,21 @@ public class MiscMapSimpleResolver extends MapSimpleResolver {
 		map("net.javacrumbs.json-unit/json-unit", "net.javacrumbs.jsonunit.");
 		map("com.squareup.okio/okio", "okio.");
 		map("org.yaml/snakeyaml", "org.yaml.snakeyaml.");
+		map("org.dom4j/dom4j", "org.dom4j.");
+		map("org.assertj/assertj-core", "org.assertj.core.");
+		map("org.glassfish.jersey.core/jersey-server", "org.glassfish.jersey.server.");
+		map("junit/junit", "org.junit.");
+		map("org.glassfish.hk2/hk2-api", "org.jvnet.hk2.annotations.");
+		map("org.opentest4j/opentest4j", "org.opentest4j.");
+		map("org.xmlunit/xmlunit-assertj", "org.xmlunit.assertj.");
+		map("org.xmlunit/xmlunit-core", "org.xmlunit.diff.");
 
 		map("commons-codec/commons-codec", "org.apache.commons.codec.");
 		map("commons-collections/commons-collections", "org.apache.commons.collections.");
 		map("commons-httpclient/commons-httpclient", "org.apache.commons.httpclient.");
 		map("commons-io/commons-io", "org.apache.commons.io.");
 		map("commons-lang/commons-lang", "org.apache.commons.lang.");
+
+		map("org.apache.commons/commons-lang3", "org.apache.commons.lang3.");
 	}
 }

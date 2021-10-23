@@ -11,6 +11,8 @@ public class JdkSimpleResolver extends SimpleResolver {
 			return JDK;
 		} else if (typeName.startsWith("com.sun.")) {
 			return JDK;
+		} else if (in(typeName, "org.w3c.dom.", "org.xml.sax.")) {
+			return JDK;
 		}
 		return null;
 	}
