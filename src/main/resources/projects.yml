@@ -23,8 +23,9 @@ id: X5LUUOMS
 dependencies:
   - org.apache.commons/commons-lang3
 ---
-name: OkHttp
+name: Square OkHttp
 id: JDP766AV
+url: https://square.github.io/okhttp/
 dependencies:
   - com.squareup.okhttp3/logging-interceptor
   - com.squareup.okhttp3/mockwebserver
@@ -35,6 +36,10 @@ id: FMQ0EXQC
 dependencies:
   - org.springframework/spring-boot
   - org.springframework/spring-web
+  - org.springframework/spring-beans
+  - org.springframework/spring-context
+  - org.springframework/spring-core
+  - org.springframework/spring-test
 ---
 name: JUnit 5
 id: AAEEOYA9
@@ -46,3 +51,150 @@ name: Dom4j
 id: BVWVWBJ2
 dependencies:
   - org.dom4j/dom4j
+---
+name: FasterXML Jackson
+id: HRXD62XK
+url: https://github.com/FasterXML
+dependencies:
+  - com.fasterxml.jackson.core/jackson-annotations
+  - com.fasterxml.jackson.core/jackson-core
+  - com.fasterxml.jackson.core/jackson-databind
+---
+name: Dozer Mapper
+id: SCYYRDCQ
+url: https://github.com/DozerMapper
+dependencies:
+  - com.github.dozermapper/dozer-core
+---
+name: Hamcrest
+id: 074GBSYR
+url: http://hamcrest.org
+dependencies:
+  - org.hamcrest/hamcrest
+---
+name: JMockit
+id: OO9DS5TN
+url: https://jmockit.github.io/
+dependencies:
+  - org.jmockit/jmockit
+---
+name: Mapstruct
+id: 7ZZT1UH2
+url: https://mapstruct.org/
+dependencies:
+  - org.mapstruct/mapstruct
+---
+name: Google Gson
+id: 98O77GMN
+url: https://github.com/google/gson
+dependencies:
+  - com.google.code.gson/gson
+---
+name: Google Guava
+id: GTCVVVYI
+url: https://github.com/google/guava
+dependencies:
+  - com.google.guava/guava
+---
+name: Google Mug
+id: ISFOSHLT
+url: https://github.com/google/mug
+dependencies:
+  - com.google.mug/mug-root
+---
+name: Google Libphonenumber
+id: WKI7QIWT
+url: https://github.com/google/libphonenumber
+dependencies:
+  - com.googlecode.libphonenumber/libphonenumber
+---
+name: Square Okio
+id: AJ3RGEMN
+url: https://square.github.io/okio/
+dependencies:
+  - com.squareup.okio/okio
+---
+name: Square Retrofit
+id: M17PGPVZ
+url: https://square.github.io/retrofit/
+dependencies:
+  - com.squareup.retrofit2/retrofit
+---
+name: Reactor
+id: GWTH8YQI
+url: https://projectreactor.io/
+dependencies:
+  - io.projectreactor/reactor-core
+---
+name: JBoss Undertow
+id: 9EQBFQUO
+url: https://undertow.io/
+dependencies:
+  - io.undertow/undertow-core
+---
+name: JUnit 4
+id: 5KM5V1N4
+url: https://junit.org/junit4/
+dependencies:
+  - junit/junit
+---
+name: Javacrumbs JsonUnit
+id: KEJTWSPR
+url: https://github.com/lukas-krecan/JsonUnit
+dependencies:
+  - net.javacrumbs.json-unit/json-unit
+---
+name: AssertJ
+id: 0QAYHVPN
+url: https://joel-costigliola.github.io/assertj/
+dependencies:
+  - org.assertj/assertj-core
+---
+name: GlassFish HK2
+id: JUUQ6SQA
+url: https://javaee.github.io/hk2/
+dependencies:
+  - org.glassfish.hk2/hk2-api
+---
+name: GlassFish Jersey
+id: EMWTHXQS
+url: https://github.com/jersey
+dependencies:
+  - org.glassfish.jersey.core/jersey-server
+---
+name: JetBrains Kotlin
+id: LOERFTBJ
+url: https://www.jetbrains.com/opensource/kotlin/
+dependencies:
+  - org.jetbrains.kotlin/kotlin-stdlib
+---
+name: JUnit Pioneer
+id: COSPBXR7
+url: https://github.com/junit-pioneer/junit-pioneer
+dependencies:
+  - org.junit-pioneer/junit-pioneer
+---
+name: Mockito
+id: BP4POYCJ
+url: https://site.mockito.org/
+dependencies:
+  - org.mockito/mockito-core
+---
+name: Opentest4j
+id: CHRLHAUM
+url: https://github.com/ota4j-team/opentest4j
+dependencies:
+  - org.opentest4j/opentest4j
+---
+name: SLF4J
+id: 8JZPJ6QU
+url: http://www.slf4j.org/
+dependencies:
+  - org.slf4j/slf4j-api
+---
+name: XMLUnit
+id: GG6DHZ17
+url: https://www.xmlunit.org/
+dependencies:
+  - org.xmlunit/xmlunit-assertj
+  - org.xmlunit/xmlunit-core

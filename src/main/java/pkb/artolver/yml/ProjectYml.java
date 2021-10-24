@@ -6,6 +6,7 @@ import java.util.Objects;
 public class ProjectYml {
 	private String name;
 	private String id;
+	private String url;
 	private List<String> dependencies;
 
 	public String getName() {
@@ -22,6 +23,14 @@ public class ProjectYml {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public List<String> getDependencies() {

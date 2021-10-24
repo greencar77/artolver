@@ -41,9 +41,15 @@ public class MainManager {
 				.collect(Collectors.toList());
 		Map<String, List<SolverJavaType>> result = dependencyManager.getDependencyMap(javaTypes);
 		System.out.println("Dependencies: " + result.keySet().size());
+		if (result.containsKey("_UNKNOWN")) {
+			System.out.println("Orphan classes: " + result.get("_UNKNOWN").size());
+		}
 		publisher.outputDependencies(result, this.folder, true);
 		publisher.outputDependencies(result, this.folder, false);
 		Map<String, Map<String, List<SolverJavaType>>> res2 = dependencyManager.getProjectMap(result);
+		if (res2.containsKey("_UNKNOWN")) {
+			System.out.println("Orphan dependencies: " + res2.get("_UNKNOWN").size());
+		}
 		System.out.println("Projects: " + res2.keySet().size());
 		publisher.outputProjects(res2, this.folder);
 
