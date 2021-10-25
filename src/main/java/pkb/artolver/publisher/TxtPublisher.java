@@ -56,4 +56,7 @@ public class TxtPublisher implements Publisher {
 			FileUtils.write(OUTPUT + folder + TXT + "dependencies_plus.txt", result);
 		}
 	}
+
+	@Override
+	public void postProcess(String folder) {}
 }

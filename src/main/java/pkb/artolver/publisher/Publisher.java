@@ -10,4 +10,5 @@ public interface Publisher {
 
 	void outputProjects(Map<String, Map<String, List<SolverJavaType>>> map, String folder);
 	void outputDependencies(Map<String, List<SolverJavaType>> map, String folder, boolean compact);
+	void postProcess(String folder);
 }
