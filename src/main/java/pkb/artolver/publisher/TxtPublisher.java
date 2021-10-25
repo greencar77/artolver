@@ -10,14 +10,22 @@ import pkb.artolver.SolverJavaType;
 
 public class TxtPublisher implements Publisher {
 
+	private static final String TXT = "txt/";
+
 	@Override
 	public void outputProjects(Map<String, Map<String, List<SolverJavaType>>> map, String folder) {
+		String projects = map.entrySet().stream()
+				.sorted(Comparator.comparing(Map.Entry::getKey))
+				.map(projEntry -> projEntry.getKey() + " " + "(" + projEntry.getValue().size() + ")")
+				.collect(Collectors.joining("\n"));
+		FileUtils.write(OUTPUT + folder + TXT + "projects.txt", projects);
+
 		String result = map.entrySet().stream()
 				.sorted(Comparator.comparing(Map.Entry::getKey))
 				.map(projEntry -> projEntry.getKey() + " " + "(" + projEntry.getValue().size() + ")" + "\n"
 						+ dep(projEntry.getValue()))
 				.collect(Collectors.joining("\n"));
-		FileUtils.write(OUTPUT + folder + "projects.txt", result);
+		FileUtils.write(OUTPUT + folder + TXT + "projects_plus.txt", result);
 	}
 
 	private String dep(Map<String, List<SolverJavaType>> input) {
@@ -35,7 +43,7 @@ public class TxtPublisher implements Publisher {
 					.sorted(Comparator.comparing(Map.Entry::getKey))
 					.map(entry -> entry.getKey() + " " + "(" + entry.getValue().size() + ")")
 					.collect(Collectors.joining("\n"));
-			FileUtils.write(OUTPUT + folder + "dependencies_short.txt", result);
+			FileUtils.write(OUTPUT + folder + TXT + "dependencies.txt", result);
 		} else {
 			result = map.entrySet().stream()
 					.sorted(Comparator.comparing(Map.Entry::getKey))
@@ -45,7 +53,7 @@ public class TxtPublisher implements Publisher {
 							.collect(Collectors.joining("\n"))
 					)
 					.collect(Collectors.joining("\n"));
-			FileUtils.write(OUTPUT + folder + "dependencies.txt", result);
+			FileUtils.write(OUTPUT + folder + TXT + "dependencies_plus.txt", result);
 		}
 	}
 }

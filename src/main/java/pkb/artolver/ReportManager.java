@@ -13,14 +13,16 @@ import org.apache.commons.io.IOUtils;
 
 import pkb.artolver.publisher.Publisher;
 
-public class MainManager {
+public class ReportManager {
 	private Publisher publisher;
 	private String rootPath;
 	private DependencyManager dependencyManager = new DependencyManager();
 	private Predicate<String> ignoreMatch;
 	private String folder;
 
-	public MainManager(Publisher publisher, String rootPath, String folder, Predicate<String> ignoreMatch) {
+	public ReportManager() {}
+
+	public ReportManager(Publisher publisher, String rootPath, String folder, Predicate<String> ignoreMatch) {
 		this.publisher = publisher;
 		this.rootPath = rootPath;
 		this.folder = folder;
