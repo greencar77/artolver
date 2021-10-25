@@ -1,6 +1,5 @@
 package pkb.artolver;
 
-import java.io.File;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -10,6 +9,7 @@ import pkb.artolver.publisher.Publisher;
 
 public class ReportManager {
 	private DependencyManager dependencyManager = new DependencyManager();
+	private ImportCollector collector = new ImportCollector();
 
 	private Publisher publisher;
 	private String rootPath;
@@ -34,9 +34,7 @@ public class ReportManager {
 	}
 
 	public void createReport() {
-		ImportCollector collector = new ImportCollector();
-		File folder = new File(rootPath);
-		List<String> imports = collector.collectImportsFolderSorted(folder, ignoreMatch);
+		List<String> imports = collector.collectImportsFolderSorted(rootPath, ignoreMatch);
 		System.out.println("Imports detected: " + imports.size());
 		List<SolverJavaType> javaTypes = imports.stream()
 				.map(SolverJavaTypeImpl::new)

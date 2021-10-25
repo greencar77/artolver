@@ -16,6 +16,10 @@ import java.util.stream.Collectors;
 import org.apache.commons.io.FileUtils;
 
 public class ImportCollector {
+	public List<String> collectImportsFolderSorted(String path, Predicate<String> ignoreMatch) {
+		return collectImportsFolderSorted(new File(path), ignoreMatch);
+	}
+
 	public List<String> collectImportsFolderSorted(File folder, Predicate<String> ignoreMatch) {
 		if (ignoreMatch == null) {
 			return collectImportsFolderSorted(folder);
