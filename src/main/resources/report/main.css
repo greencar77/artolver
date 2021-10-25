@@ -1,0 +1,4 @@
+div.multiColDiv {
+	column-count: 3;
+	column-rule: 1px solid lightblue;
+}

@@ -2,10 +2,14 @@ package pkb.artolver;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 
 import pkb.artolver.publisher.Publisher;
 
@@ -53,16 +57,18 @@ public class MainManager {
 		System.out.println("Projects: " + res2.keySet().size());
 		publisher.outputProjects(res2, this.folder);
 
-//		copyReportFiles(Publisher.OUTPUT + folder);
+		copyReportFiles("report/index.html", Publisher.OUTPUT + this.folder + "index.html");
+		copyReportFiles("report/main.js", Publisher.OUTPUT + this.folder + "main.js");
+		copyReportFiles("report/main.css", Publisher.OUTPUT + this.folder + "main.css");
 	}
 
-	private void copyReportFiles(String targetPath) {
-//		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("report/index.html");
+	private void copyReportFiles(String sourcePath, String targetPath) {
+		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(sourcePath);
 		try {
-			org.apache.commons.io.FileUtils.copyFile(new File("src/main/resources/report/index.html"), new File(targetPath + "index.html"));
+			byte[] bytes = IOUtils.toByteArray(is);
+			FileUtils.writeByteArrayToFile(new File(targetPath), bytes);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
-
 	}
 }
