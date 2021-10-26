@@ -1,5 +1,7 @@
 package pkb.artolver;
 
+import static pkb.artolver.DependencyManager.UNKNOWN;
+
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -39,19 +41,19 @@ public class ReportManager {
 		List<SolverJavaType> javaTypes = imports.stream()
 				.map(SolverJavaTypeImpl::new)
 				.collect(Collectors.toList());
-		Map<String, List<SolverJavaType>> result = dependencyManager.getDependencyMap(javaTypes);
-		System.out.println("Dependencies: " + result.keySet().size());
-		if (result.containsKey("_UNKNOWN")) {
-			System.out.println("Orphan classes: " + result.get("_UNKNOWN").size());
+		Map<String, List<SolverJavaType>> dependencyMap = dependencyManager.getDependencyMap(javaTypes);
+		System.out.println("Dependencies: " + dependencyMap.keySet().size());
+		if (dependencyMap.containsKey(UNKNOWN)) {
+			System.out.println("Orphan classes: " + dependencyMap.get(UNKNOWN).size());
 		}
-		publisher.outputDependencies(result, this.folder, true);
-		publisher.outputDependencies(result, this.folder, false);
-		Map<String, Map<String, List<SolverJavaType>>> res2 = dependencyManager.getProjectMap(result);
-		if (res2.containsKey("_UNKNOWN")) {
-			System.out.println("Orphan dependencies: " + res2.get("_UNKNOWN").size());
+		publisher.outputDependencies(dependencyMap, folder, true);
+		publisher.outputDependencies(dependencyMap, folder, false);
+		Map<String, Map<String, List<SolverJavaType>>> projectMap = dependencyManager.getProjectMap(dependencyMap);
+		if (projectMap.containsKey(UNKNOWN)) {
+			System.out.println("Orphan dependencies: " + projectMap.get(UNKNOWN).size());
 		}
-		System.out.println("Projects: " + res2.keySet().size());
-		publisher.outputProjects(res2, this.folder);
-		publisher.postProcess(this.folder);
+		System.out.println("Projects: " + projectMap.keySet().size());
+		publisher.outputProjects(projectMap, folder);
+		publisher.postProcess(folder);
 	}
 }

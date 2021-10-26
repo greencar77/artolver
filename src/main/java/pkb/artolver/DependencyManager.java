@@ -18,6 +18,8 @@ import pkb.artolver.yml.ProjectYml;
 
 public class DependencyManager {
 
+	public static final String UNKNOWN = "_UNKNOWN";
+
 	public Map<String, List<SolverJavaType>> getDependencyMap(Collection<? extends SolverJavaType> javaTypes, SimpleResolver... additionalResolvers) {
 		AllBatchResolver batchResolver = new AllBatchResolver(false);
 		if (additionalResolvers != null) {
@@ -33,7 +35,7 @@ public class DependencyManager {
 
 		Map<String, Map<String, List<SolverJavaType>>> result = new HashMap<>();
 		for (Map.Entry<String, List<SolverJavaType>> entry : dependencyMap.entrySet()) {
-			String selectedProject = "_UNKNOWN";
+			String selectedProject = UNKNOWN;
 			if (depProj.containsKey(entry.getKey())) {
 				ProjectYml project = depProj.get(entry.getKey());
 				selectedProject = project.getName();
