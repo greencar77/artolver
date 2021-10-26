@@ -24,7 +24,7 @@ public class JsonPublisher implements Publisher {
 	public void outputProjects(Map<ProjectYml, Map<String, List<SolverJavaType>>> map, String folder) {
 		List<ProjectJson> json = map.entrySet().stream()
 				.sorted(Comparator.comparing(Map.Entry::getKey))
-				.map(e -> map(e.getKey()))
+				.map(e -> map(e.getKey(), e.getValue()))
 				.collect(Collectors.toList());
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -55,11 +55,14 @@ public class JsonPublisher implements Publisher {
 		}
 	}
 
-	private ProjectJson map(ProjectYml project) {
+	private ProjectJson map(ProjectYml project, Map<String, List<SolverJavaType>> actualDependencies) {
 		ProjectJson result = new ProjectJson();
 		result.setId(project.getId());
 		result.setName(project.getName());
-		result.setDependencies(project.getDependencies());
+		result.setDependencies(actualDependencies.keySet()
+				.stream()
+				.sorted()
+				.collect(Collectors.toList()));
 		Collections.sort(result.getDependencies());
 		return result;
 	}

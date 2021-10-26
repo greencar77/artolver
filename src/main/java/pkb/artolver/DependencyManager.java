@@ -33,18 +33,18 @@ public class DependencyManager {
 		return dependencyGrouper.resolveTypes(javaTypes);
 	}
 
-	public Map<ProjectYml, Map<String, List<SolverJavaType>>> getProjectMap(Map<String, List<SolverJavaType>> dependencyMap) {
-		Map<String, ProjectYml> globalProjects = getProjectSets();
-		Map<String, ProjectYml> projectByDependency = projectByDependency(globalProjects);
-		Map<String, Map<String, List<SolverJavaType>>> dependenciesByProject = dependenciesByProject(dependencyMap, projectByDependency);
+	public Map<ProjectYml, Map<String, List<SolverJavaType>>> getProjectMap(Map<String, List<SolverJavaType>> typesByDependency) {
+		Map<String, ProjectYml> projectById = getProjectSets();
+		Map<String, ProjectYml> projectByDependency = projectByDependency(projectById);
+		Map<String, Map<String, List<SolverJavaType>>> dependenciesByProject = dependenciesByProject(typesByDependency, projectByDependency);
 		return dependenciesByProject.entrySet().stream()
-				.collect(toMap(e -> globalProjects.get(e.getKey()), Map.Entry::getValue));
+				.collect(toMap(e -> projectById.get(e.getKey()), Map.Entry::getValue));
 	}
 
-	private Map<String, Map<String, List<SolverJavaType>>> dependenciesByProject(Map<String, List<SolverJavaType>> dependencyMap,
+	private Map<String, Map<String, List<SolverJavaType>>> dependenciesByProject(Map<String, List<SolverJavaType>> typesByDependency,
 			Map<String, ProjectYml> projectByDependency) {
 		Map<String, Map<String, List<SolverJavaType>>> result = new HashMap<>();
-		for (Map.Entry<String, List<SolverJavaType>> entry : dependencyMap.entrySet()) {
+		for (Map.Entry<String, List<SolverJavaType>> entry : typesByDependency.entrySet()) {
 			String selectedProject = UNKNOWN;
 			if (projectByDependency.containsKey(entry.getKey())) {
 				selectedProject = projectByDependency.get(entry.getKey()).getId();
