@@ -7,6 +7,12 @@ function init() {
     let titleEl = document.getElementById('title');
     titleEl.textContent = project.name;
 
+    let projectUrlEl = document.getElementById('projectUrl');
+    let hrefEl = document.createElement('a');
+    hrefEl.setAttribute('href', project.projectUrl);
+    hrefEl.textContent = '[' + project.projectUrl + ']';
+    projectUrlEl.appendChild(hrefEl);
+
     let depEl = document.getElementById('deps');
     for (const d of project.dependencies) {
         let depItemEl = document.createElement('li');

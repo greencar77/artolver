@@ -35,17 +35,12 @@ name: Spring
 id: FMQ0EXQC
 dependencies:
   - org.springframework/spring-boot
-  - org.springframework/spring-web
   - org.springframework/spring-beans
   - org.springframework/spring-context
   - org.springframework/spring-core
   - org.springframework/spring-test
----
-name: JUnit 5
-id: AAEEOYA9
-dependencies:
-  - org.junit.jupiter/junit-jupiter-params
-  - org.junit.jupiter/junit-jupiter-api
+  - org.springframework/spring-web
+  - org.springframework/spring-webmvc
 ---
 name: Dom4j
 id: BVWVWBJ2
@@ -132,11 +127,13 @@ url: https://undertow.io/
 dependencies:
   - io.undertow/undertow-core
 ---
-name: JUnit 4
+name: JUnit
 id: 5KM5V1N4
-url: https://junit.org/junit4/
+url: https://junit.org
 dependencies:
   - junit/junit
+  - org.junit.jupiter/junit-jupiter-params
+  - org.junit.jupiter/junit-jupiter-api
 ---
 name: Javacrumbs JsonUnit
 id: KEJTWSPR

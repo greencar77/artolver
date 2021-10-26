@@ -59,6 +59,7 @@ public class JsonPublisher implements Publisher {
 		ProjectJson result = new ProjectJson();
 		result.setId(project.getId());
 		result.setName(project.getName());
+		result.setProjectUrl(project.getUrl());
 		result.setDependencies(actualDependencies.keySet()
 				.stream()
 				.sorted()

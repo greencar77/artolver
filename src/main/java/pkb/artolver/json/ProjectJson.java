@@ -5,6 +5,7 @@ import java.util.List;
 public class ProjectJson {
 	private String name;
 	private String id;
+	private String projectUrl;
 	private List<String> dependencies;
 
 	public String getName() {
@@ -21,6 +22,14 @@ public class ProjectJson {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getProjectUrl() {
+		return projectUrl;
+	}
+
+	public void setProjectUrl(String projectUrl) {
+		this.projectUrl = projectUrl;
 	}
 
 	public List<String> getDependencies() {
