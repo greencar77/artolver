@@ -11,6 +11,7 @@ function init() {
         linkEl.setAttribute("href", "project.html#" + p.id)
         linkEl.textContent = p.name;
         projEl.appendChild(linkEl);
+        projEl.appendChild(document.createTextNode(" (" + p.dependencies.length + ")"));
         el.appendChild(projEl);
     }
 }

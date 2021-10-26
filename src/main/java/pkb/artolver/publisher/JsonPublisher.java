@@ -3,6 +3,7 @@ package pkb.artolver.publisher;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -56,6 +57,8 @@ public class JsonPublisher implements Publisher {
 		ProjectJson result = new ProjectJson();
 		result.setId(project.getId());
 		result.setName(project.getName());
+		result.setDependencies(project.getDependencies());
+		Collections.sort(result.getDependencies());
 		return result;
 	}
 }
