@@ -1,6 +1,6 @@
 ---
 name: JDK
-id: GYT14HCI
+id: JDK
 dependencies:
   - JDK
 ---
@@ -195,3 +195,15 @@ url: https://www.xmlunit.org/
 dependencies:
   - org.xmlunit/xmlunit-assertj
   - org.xmlunit/xmlunit-core
+---
+name: Reflections
+id: OXC9LXBX
+url: https://github.com/ronmamo/reflections
+dependencies:
+  - org.reflections/reflections
+---
+name: Orica
+id: BWTCUGM9
+url: https://github.com/orika-mapper/orika
+dependencies:
+  - ma.glasnost.orika/orika-core
