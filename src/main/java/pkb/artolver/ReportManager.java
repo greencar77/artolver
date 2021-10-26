@@ -8,6 +8,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import pkb.artolver.publisher.Publisher;
+import pkb.artolver.yml.ProjectYml;
 
 public class ReportManager {
 	private DependencyManager dependencyManager = new DependencyManager();
@@ -48,10 +49,10 @@ public class ReportManager {
 		}
 		publisher.outputDependencies(dependencyMap, folder, true);
 		publisher.outputDependencies(dependencyMap, folder, false);
-		Map<String, Map<String, List<SolverJavaType>>> projectMap = dependencyManager.getProjectMap(dependencyMap);
-		if (projectMap.containsKey(UNKNOWN)) {
-			System.out.println("Orphan dependencies: " + projectMap.get(UNKNOWN).size());
-		}
+		Map<ProjectYml, Map<String, List<SolverJavaType>>> projectMap = dependencyManager.getProjectMap(dependencyMap);
+//		if (projectMap.containsKey(UNKNOWN)) {
+//			System.out.println("Orphan dependencies: " + projectMap.get(UNKNOWN).size());
+//		}
 		System.out.println("Projects: " + projectMap.keySet().size());
 		publisher.outputProjects(projectMap, folder);
 		publisher.postProcess(folder);

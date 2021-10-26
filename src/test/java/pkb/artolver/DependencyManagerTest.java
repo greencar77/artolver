@@ -24,7 +24,7 @@ class DependencyManagerTest {
 		Map<String, List<SolverJavaType>> dependencyMap = new HashMap<>();
 		dependencyMap.put("org.yaml/snakeyaml", List.of(new SolverJavaTypeImpl("aaa")));
 		dependencyMap.put("unknown/unknown", List.of(new SolverJavaTypeImpl("bbb")));
-		Map<String, Map<String, List<SolverJavaType>>> result = manager.getProjectMap(dependencyMap);
+		Map<ProjectYml, Map<String, List<SolverJavaType>>> result = manager.getProjectMap(dependencyMap);
 		assertEquals(1, result.size());
 	}
 }

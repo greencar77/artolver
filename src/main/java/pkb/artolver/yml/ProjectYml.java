@@ -1,9 +1,8 @@
 package pkb.artolver.yml;
 
 import java.util.List;
-import java.util.Objects;
 
-public class ProjectYml {
+public class ProjectYml implements Comparable<ProjectYml> {
 	private String name;
 	private String id;
 	private String url;
@@ -42,17 +41,24 @@ public class ProjectYml {
 	}
 
 	@Override
+	public int compareTo(ProjectYml o) {
+		return name.compareTo(o.name);
+	}
+
+	@Override
 	public boolean equals(Object o) {
 		if (this == o)
 			return true;
 		if (o == null || getClass() != o.getClass())
 			return false;
+
 		ProjectYml that = (ProjectYml) o;
+
 		return id.equals(that.id);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return id.hashCode();
 	}
 }

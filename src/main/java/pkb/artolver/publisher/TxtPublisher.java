@@ -7,13 +7,14 @@ import java.util.stream.Collectors;
 
 import pkb.artolver.FileUtils;
 import pkb.artolver.SolverJavaType;
+import pkb.artolver.yml.ProjectYml;
 
 public class TxtPublisher implements Publisher {
 
 	private static final String TXT = "txt/";
 
 	@Override
-	public void outputProjects(Map<String, Map<String, List<SolverJavaType>>> map, String folder) {
+	public void outputProjects(Map<ProjectYml, Map<String, List<SolverJavaType>>> map, String folder) {
 		String projects = map.entrySet().stream()
 				.sorted(Comparator.comparing(Map.Entry::getKey))
 				.map(projEntry -> projEntry.getKey() + " " + "(" + projEntry.getValue().size() + ")")

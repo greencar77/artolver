@@ -15,18 +15,15 @@ import com.google.gson.GsonBuilder;
 import pkb.artolver.FileUtils;
 import pkb.artolver.SolverJavaType;
 import pkb.artolver.json.ProjectJson;
+import pkb.artolver.yml.ProjectYml;
 
 public class JsonPublisher implements Publisher {
 
 	@Override
-	public void outputProjects(Map<String, Map<String, List<SolverJavaType>>> map, String folder) {
+	public void outputProjects(Map<ProjectYml, Map<String, List<SolverJavaType>>> map, String folder) {
 		List<ProjectJson> json = map.entrySet().stream()
 				.sorted(Comparator.comparing(Map.Entry::getKey))
-				.map(e -> {
-					ProjectJson result = new ProjectJson();
-					result.setName(e.getKey());
-					return result;
-				})
+				.map(e -> map(e.getKey()))
 				.collect(Collectors.toList());
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -53,5 +50,12 @@ public class JsonPublisher implements Publisher {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	private ProjectJson map(ProjectYml project) {
+		ProjectJson result = new ProjectJson();
+		result.setId(project.getId());
+		result.setName(project.getName());
+		return result;
 	}
 }
