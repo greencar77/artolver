@@ -16,7 +16,7 @@ function init() {
     let depEl = document.getElementById('deps');
     for (const d of project.dependencies) {
         let depItemEl = document.createElement('li');
-        depItemEl.textContent = d;
+        depItemEl.textContent = d.name;
         depEl.appendChild(depItemEl);
     }
 }

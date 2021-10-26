@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import pkb.artolver.FileUtils;
 import pkb.artolver.SolverJavaType;
+import pkb.artolver.json.DependencyJson;
 import pkb.artolver.json.ProjectJson;
 import pkb.artolver.yml.ProjectYml;
 
@@ -60,11 +61,17 @@ public class JsonPublisher implements Publisher {
 		result.setId(project.getId());
 		result.setName(project.getName());
 		result.setProjectUrl(project.getUrl());
-		result.setDependencies(actualDependencies.keySet()
+		result.setDependencies(actualDependencies.entrySet()
 				.stream()
-				.sorted()
+				.sorted(Comparator.comparing(Map.Entry::getKey))
+				.map(e -> map(e))
 				.collect(Collectors.toList()));
-		Collections.sort(result.getDependencies());
+		return result;
+	}
+
+	private DependencyJson map(Map.Entry<String, List<SolverJavaType>> entry) {
+		DependencyJson result = new DependencyJson();
+		result.setName(entry.getKey());
 		return result;
 	}
 }

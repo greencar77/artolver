@@ -6,7 +6,7 @@ public class ProjectJson {
 	private String name;
 	private String id;
 	private String projectUrl;
-	private List<String> dependencies;
+	private List<DependencyJson> dependencies;
 
 	public String getName() {
 		return name;
@@ -32,11 +32,11 @@ public class ProjectJson {
 		this.projectUrl = projectUrl;
 	}
 
-	public List<String> getDependencies() {
+	public List<DependencyJson> getDependencies() {
 		return dependencies;
 	}
 
-	public void setDependencies(List<String> dependencies) {
+	public void setDependencies(List<DependencyJson> dependencies) {
 		this.dependencies = dependencies;
 	}
 }
