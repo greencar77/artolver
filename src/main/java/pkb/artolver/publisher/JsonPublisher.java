@@ -28,7 +28,7 @@ public class JsonPublisher implements Publisher {
 				.collect(Collectors.toList());
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		FileUtils.write(OUTPUT + folder + "projects.js", "const proj = " + gson.toJson(json) + ";");
+		FileUtils.write(OUTPUT + folder + "data/" + "projects.js", "const proj = " + gson.toJson(json) + ";");
 	}
 
 	@Override
@@ -38,9 +38,11 @@ public class JsonPublisher implements Publisher {
 
 	@Override
 	public void postProcess(String folder) {
+		copyReportFiles("report/main.css", Publisher.OUTPUT + folder + "main.css");
 		copyReportFiles("report/index.html", Publisher.OUTPUT + folder + "index.html");
 		copyReportFiles("report/main.js", Publisher.OUTPUT + folder + "main.js");
-		copyReportFiles("report/main.css", Publisher.OUTPUT + folder + "main.css");
+		copyReportFiles("report/project.html", Publisher.OUTPUT + folder + "project.html");
+		copyReportFiles("report/project.js", Publisher.OUTPUT + folder + "project.js");
 	}
 
 	private void copyReportFiles(String sourcePath, String targetPath) {

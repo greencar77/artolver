@@ -17,13 +17,13 @@ public class TxtPublisher implements Publisher {
 	public void outputProjects(Map<ProjectYml, Map<String, List<SolverJavaType>>> map, String folder) {
 		String projects = map.entrySet().stream()
 				.sorted(Comparator.comparing(Map.Entry::getKey))
-				.map(projEntry -> projEntry.getKey() + " " + "(" + projEntry.getValue().size() + ")")
+				.map(projEntry -> projEntry.getKey().getName() + " " + "(" + projEntry.getValue().size() + ")")
 				.collect(Collectors.joining("\n"));
 		FileUtils.write(OUTPUT + folder + TXT + "projects.txt", projects);
 
 		String result = map.entrySet().stream()
 				.sorted(Comparator.comparing(Map.Entry::getKey))
-				.map(projEntry -> projEntry.getKey() + " " + "(" + projEntry.getValue().size() + ")" + "\n"
+				.map(projEntry -> projEntry.getKey().getName() + " " + "(" + projEntry.getValue().size() + ")" + "\n"
 						+ dep(projEntry.getValue()))
 				.collect(Collectors.joining("\n"));
 		FileUtils.write(OUTPUT + folder + TXT + "projects_plus.txt", result);
