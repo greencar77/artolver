@@ -1,7 +1,7 @@
 package pkb.artolver.batch;
 
 import pkb.artolver.simple.JdkSimpleResolver;
-import pkb.artolver.simple.JupiterMapSimpleResolver;
+import pkb.artolver.simple.JunitMapSimpleResolver;
 import pkb.artolver.simple.MapStructResolver;
 import pkb.artolver.simple.MiscMapSimpleResolver;
 import pkb.artolver.simple.OkHttpResolver;
@@ -23,7 +23,7 @@ public class AllBatchResolver extends BatchResolver {
 				.append(new SpringResolver())
 				.append(new OkHttpResolver())
 				.append(new MapStructResolver())
-				.append(new JupiterMapSimpleResolver())
+				.append(new JunitMapSimpleResolver())
 
 				.append(new MiscMapSimpleResolver())
 		;

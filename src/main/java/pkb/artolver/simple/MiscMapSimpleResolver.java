@@ -27,11 +27,14 @@ public class MiscMapSimpleResolver extends MapSimpleResolver {
 		map("org.dom4j/dom4j", "org.dom4j.");
 		map("org.assertj/assertj-core", "org.assertj.core.");
 		map("org.glassfish.jersey.core/jersey-server", "org.glassfish.jersey.server.");
-		map("junit/junit", "org.junit.");
 		map("org.glassfish.hk2/hk2-api", "org.jvnet.hk2.annotations.");
 		map("org.opentest4j/opentest4j", "org.opentest4j.");
 		map("org.xmlunit/xmlunit-assertj", "org.xmlunit.assertj.");
 		map("org.xmlunit/xmlunit-core", "org.xmlunit.diff.");
+		map("com.j2html/j2html", "j2html.");
+		map("net.bytebuddy/byte-buddy", "net.bytebuddy.");
+		map("com.hierynomus/sshj", "net.schmizz.");
+		map("net.sourceforge.stripes/stripes", "net.sourceforge.stripes.");
 
 		map("commons-codec/commons-codec", "org.apache.commons.codec.");
 		map("commons-collections/commons-collections", "org.apache.commons.collections.");

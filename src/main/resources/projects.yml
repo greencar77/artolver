@@ -207,3 +207,27 @@ id: BWTCUGM9
 url: https://github.com/orika-mapper/orika
 dependencies:
   - ma.glasnost.orika/orika-core
+---
+name: j2html
+id: CUI3XRYV
+url: https://j2html.com
+dependencies:
+  - com.j2html/j2html
+---
+name: Bytebuddy
+id: W09GP8OQ
+url: https://bytebuddy.net/#/
+dependencies:
+  - net.bytebuddy/byte-buddy
+---
+name: Hierynomus sshj
+id: SBA6JEZD
+url: https://github.com/hierynomus/sshj
+dependencies:
+  - com.hierynomus/sshj
+---
+name: Sourceforge Stripes
+id: O3JBFIMM
+url: https://sourceforge.net/projects/stripes/
+dependencies:
+  - net.sourceforge.stripes/stripes
