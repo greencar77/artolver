@@ -33,7 +33,7 @@ public class ReportManagerBuilder {
 		return this;
 	}
 
-	public ReportManagerBuilder witPublisher(Publisher publisher) {
+	public ReportManagerBuilder withPublisher(Publisher publisher) {
 		this.publishers.add(publisher);
 		return this;
 	}
