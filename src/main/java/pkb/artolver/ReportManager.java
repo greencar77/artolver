@@ -14,30 +14,36 @@ public class ReportManager {
 	private DependencyManager dependencyManager = new DependencyManager();
 	private ImportCollector collector = new ImportCollector();
 
-	private Publisher publisher;
+	private List<Publisher> publishers;
 	private String rootPath;
-	private Predicate<String> ignoreMatch;
+	private Predicate<String> ignoreMatcher;
 	private String folder;
+	private String title;
 
-	public ReportManager() {}
+	ReportManager() {}
 
-	public ReportManager(Publisher publisher, String rootPath, String folder, Predicate<String> ignoreMatch) {
-		this.publisher = publisher;
-		this.rootPath = rootPath;
-		this.folder = folder;
-		this.ignoreMatch = ignoreMatch;
-	}
-
-	public void setPublisher(Publisher publisher) {
-		this.publisher = publisher;
+	public void setPublishers(List<Publisher> publishers) {
+		this.publishers = publishers;
 	}
 
 	public void setRootPath(String rootPath) {
 		this.rootPath = rootPath;
 	}
 
+	public void setIgnoreMatcher(Predicate<String> ignoreMatcher) {
+		this.ignoreMatcher = ignoreMatcher;
+	}
+
+	public void setFolder(String folder) {
+		this.folder = folder;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	public void createReport() {
-		List<String> imports = collector.collectImportsFolderSorted(rootPath, ignoreMatch);
+		List<String> imports = collector.collectImportsFolderSorted(rootPath, ignoreMatcher);
 		System.out.println("Imports detected: " + imports.size());
 		List<SolverJavaType> javaTypes = imports.stream()
 				.map(SolverJavaTypeImpl::new)
@@ -47,14 +53,17 @@ public class ReportManager {
 		if (dependencyMap.containsKey(UNKNOWN)) {
 			System.out.println("Orphan classes: " + dependencyMap.get(UNKNOWN).size());
 		}
-		publisher.outputDependencies(dependencyMap, folder, true);
-		publisher.outputDependencies(dependencyMap, folder, false);
 		Map<ProjectYml, Map<String, List<SolverJavaType>>> projectMap = dependencyManager.getProjectMap(dependencyMap);
-//		if (projectMap.containsKey(UNKNOWN)) {
-//			System.out.println("Orphan dependencies: " + projectMap.get(UNKNOWN).size());
-//		}
+		//		if (projectMap.containsKey(UNKNOWN)) {
+		//			System.out.println("Orphan dependencies: " + projectMap.get(UNKNOWN).size());
+		//		}
 		System.out.println("Projects: " + projectMap.keySet().size());
-		publisher.outputProjects(projectMap, folder);
-		publisher.postProcess(folder);
+
+		publishers.forEach(p -> {
+			p.outputDependencies(dependencyMap, folder, true);
+			p.outputDependencies(dependencyMap, folder, false);
+			p.outputProjects(projectMap, folder);
+			p.postProcess(folder);
+		});
 	}
 }
