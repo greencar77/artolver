@@ -37,7 +37,12 @@ public class TxtPublisher implements Publisher {
 	}
 
 	@Override
-	public void outputDependencies(Map<String, List<SolverJavaType>> map, String folder, boolean compact) {
+	public void outputDependencies(Map<String, List<SolverJavaType>> map, String folder) {
+		outputDependencies(map, folder, true);
+		outputDependencies(map, folder, false);
+	}
+
+	private void outputDependencies(Map<String, List<SolverJavaType>> map, String folder, boolean compact) {
 		String result;
 		if (compact) {
 			result = map.entrySet().stream()

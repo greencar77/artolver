@@ -3,7 +3,6 @@ package pkb.artolver.publisher;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -21,20 +20,24 @@ import pkb.artolver.yml.ProjectYml;
 
 public class JsonPublisher implements Publisher {
 
+	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+
 	@Override
 	public void outputProjects(Map<ProjectYml, Map<String, List<SolverJavaType>>> map, String folder) {
 		List<ProjectJson> json = map.entrySet().stream()
 				.sorted(Comparator.comparing(Map.Entry::getKey))
 				.map(e -> map(e.getKey(), e.getValue()))
 				.collect(Collectors.toList());
-
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		FileUtils.write(OUTPUT + folder + "data/" + "projects.js", "const proj = " + gson.toJson(json) + ";");
+		FileUtils.write(OUTPUT + folder + "data/" + "projects.js", "const proj = " + GSON.toJson(json) + ";");
 	}
 
 	@Override
-	public void outputDependencies(Map<String, List<SolverJavaType>> map, String folder, boolean compact) {
-
+	public void outputDependencies(Map<String, List<SolverJavaType>> map, String folder) {
+		List<DependencyJson> json = map.entrySet().stream()
+				.sorted(Comparator.comparing(Map.Entry::getKey))
+				.map(e -> map(e))
+				.collect(Collectors.toList());
+		FileUtils.write(OUTPUT + folder + "data/" + "dependencies.js", "const dependencies = " + GSON.toJson(json) + ";");
 	}
 
 	@Override
@@ -64,14 +67,24 @@ public class JsonPublisher implements Publisher {
 		result.setDependencies(actualDependencies.entrySet()
 				.stream()
 				.sorted(Comparator.comparing(Map.Entry::getKey))
-				.map(e -> map(e))
+				.map(e -> mapShort(e))
 				.collect(Collectors.toList()));
+		return result;
+	}
+
+	private DependencyJson mapShort(Map.Entry<String, List<SolverJavaType>> entry) {
+		DependencyJson result = new DependencyJson();
+		result.setName(entry.getKey());
 		return result;
 	}
 
 	private DependencyJson map(Map.Entry<String, List<SolverJavaType>> entry) {
 		DependencyJson result = new DependencyJson();
 		result.setName(entry.getKey());
+		result.setTypes(entry.getValue().stream()
+				.map(v -> v.getType())
+				.collect(Collectors.toList())
+		);
 		return result;
 	}
 }

@@ -10,6 +10,6 @@ public interface Publisher {
 	String OUTPUT = "target/report/";
 
 	void outputProjects(Map<ProjectYml, Map<String, List<SolverJavaType>>> map, String folder);
-	void outputDependencies(Map<String, List<SolverJavaType>> map, String folder, boolean compact);
+	void outputDependencies(Map<String, List<SolverJavaType>> map, String folder);
 	void postProcess(String folder);
 }

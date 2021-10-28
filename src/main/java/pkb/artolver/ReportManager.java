@@ -60,8 +60,7 @@ public class ReportManager {
 		System.out.println("Projects: " + projectMap.keySet().size());
 
 		publishers.forEach(p -> {
-			p.outputDependencies(dependencyMap, folder, true);
-			p.outputDependencies(dependencyMap, folder, false);
+			p.outputDependencies(dependencyMap, folder);
 			p.outputProjects(projectMap, folder);
 			p.postProcess(folder);
 		});
