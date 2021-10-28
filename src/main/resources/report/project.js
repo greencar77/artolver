@@ -16,7 +16,10 @@ function init() {
     let depEl = document.getElementById('deps');
     for (const d of project.dependencies) {
         let depItemEl = document.createElement('li');
-        depItemEl.textContent = d.name;
+        let depSpan = document.createElement('span');
+        depSpan.setAttribute("onclick", "clickDep(this);");
+        depSpan.textContent = d.name;
+        depItemEl.appendChild(depSpan);
         depEl.appendChild(depItemEl);
     }
 }
@@ -27,4 +30,20 @@ function getProject(projId) {
             return p;
         }
     }
+}
+
+function clickDep(element) {
+    let depId = element.textContent;
+    let typesElem = document.getElementById('types');
+    typesElem.textContent = '';
+    let dep = getDep(depId);
+    dep.types.forEach(t => {
+        let el = document.createElement('li');
+        el.textContent = t;
+        typesElem.appendChild(el);
+    });
+}
+
+function getDep(depId) {
+    return dependencies.filter(d => d.name == depId)[0];
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 public class DependencyJson {
 	private String name;
+	private int typesCount;
 	private List<String> types;
 
 	public String getName() {
@@ -12,6 +13,14 @@ public class DependencyJson {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getTypesCount() {
+		return typesCount;
+	}
+
+	public void setTypesCount(int typesCount) {
+		this.typesCount = typesCount;
 	}
 
 	public List<String> getTypes() {

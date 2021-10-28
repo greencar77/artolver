@@ -35,7 +35,7 @@ public class JsonPublisher implements Publisher {
 	public void outputDependencies(Map<String, List<SolverJavaType>> map, String folder) {
 		List<DependencyJson> json = map.entrySet().stream()
 				.sorted(Comparator.comparing(Map.Entry::getKey))
-				.map(e -> map(e))
+				.map(e -> map(e, false))
 				.collect(Collectors.toList());
 		FileUtils.write(OUTPUT + folder + "data/" + "dependencies.js", "const dependencies = " + GSON.toJson(json) + ";");
 	}
@@ -67,24 +67,21 @@ public class JsonPublisher implements Publisher {
 		result.setDependencies(actualDependencies.entrySet()
 				.stream()
 				.sorted(Comparator.comparing(Map.Entry::getKey))
-				.map(e -> mapShort(e))
+				.map(e -> map(e, true))
 				.collect(Collectors.toList()));
 		return result;
 	}
 
-	private DependencyJson mapShort(Map.Entry<String, List<SolverJavaType>> entry) {
+	private DependencyJson map(Map.Entry<String, List<SolverJavaType>> entry, boolean compact) {
 		DependencyJson result = new DependencyJson();
 		result.setName(entry.getKey());
-		return result;
-	}
-
-	private DependencyJson map(Map.Entry<String, List<SolverJavaType>> entry) {
-		DependencyJson result = new DependencyJson();
-		result.setName(entry.getKey());
-		result.setTypes(entry.getValue().stream()
-				.map(v -> v.getType())
-				.collect(Collectors.toList())
-		);
+		result.setTypesCount(entry.getValue().size());
+		if (!compact) {
+			result.setTypes(entry.getValue().stream()
+					.map(v -> v.getType())
+					.collect(Collectors.toList())
+			);
+		}
 		return result;
 	}
 }
