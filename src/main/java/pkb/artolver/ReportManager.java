@@ -62,6 +62,7 @@ public class ReportManager {
 		publishers.forEach(p -> {
 			p.outputDependencies(dependencyMap, folder);
 			p.outputProjects(projectMap, folder);
+			p.outputMain(title, javaTypes.size(), dependencyMap.size(), projectMap.size(), folder);
 			p.postProcess(folder);
 		});
 	}

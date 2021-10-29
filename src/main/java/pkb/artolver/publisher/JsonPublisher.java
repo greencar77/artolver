@@ -15,6 +15,7 @@ import com.google.gson.GsonBuilder;
 import pkb.artolver.FileUtils;
 import pkb.artolver.SolverJavaType;
 import pkb.artolver.json.DependencyJson;
+import pkb.artolver.json.MainJson;
 import pkb.artolver.json.ProjectJson;
 import pkb.artolver.yml.ProjectYml;
 
@@ -38,6 +39,16 @@ public class JsonPublisher implements Publisher {
 				.map(e -> map(e, false))
 				.collect(Collectors.toList());
 		FileUtils.write(OUTPUT + folder + "data/" + "dependencies.js", "const dependencies = " + GSON.toJson(json) + ";");
+	}
+
+	@Override
+	public void outputMain(String title, int typeCount, int dependencyCount, int projectCount, String folder) {
+		MainJson json = new MainJson();
+		json.setTitle(title);
+		json.setTypeCount(typeCount);
+		json.setDependencyCount(dependencyCount);
+		json.setProjectCount(projectCount);
+		FileUtils.write(OUTPUT + folder + "data/" + "main.js", "const main = " + GSON.toJson(json) + ";");
 	}
 
 	@Override

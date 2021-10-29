@@ -42,6 +42,16 @@ public class TxtPublisher implements Publisher {
 		outputDependencies(map, folder, false);
 	}
 
+	@Override
+	public void outputMain(String title, int typeCount, int dependencyCount, int projectCount, String folder) {
+		String result = "";
+		result += "title=" + title + "\n";
+		result += "typeCount=" + typeCount + "\n";
+		result += "dependencyCount=" + dependencyCount + "\n";
+		result += "projectCount=" + projectCount + "\n";
+		FileUtils.write(OUTPUT + folder + TXT + "main.txt", result);
+	}
+
 	private void outputDependencies(Map<String, List<SolverJavaType>> map, String folder, boolean compact) {
 		String result;
 		if (compact) {

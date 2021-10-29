@@ -11,5 +11,6 @@ public interface Publisher {
 
 	void outputProjects(Map<ProjectYml, Map<String, List<SolverJavaType>>> map, String folder);
 	void outputDependencies(Map<String, List<SolverJavaType>> map, String folder);
+	void outputMain(String title, int typeCount, int dependencyCount, int projectCount, String folder);
 	void postProcess(String folder);
 }

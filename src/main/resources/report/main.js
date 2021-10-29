@@ -1,6 +1,11 @@
 "use strict";
 
 function init() {
+    document.getElementById('title').textContent = main.title;
+    document.getElementById('typeCount').textContent = main.typeCount;
+    document.getElementById('dependencyCount').textContent = main.dependencyCount;
+    document.getElementById('projectCount').textContent = main.projectCount;
+
     let div = document.getElementById('projects');
 
     let el = document.createElement('ol');

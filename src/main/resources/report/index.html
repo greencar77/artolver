@@ -5,10 +5,18 @@
     <title>Report</title>
     <link rel="stylesheet" href="main.css" type="text/css">
     <script type="text/javascript" src="data/projects.js"></script>
+    <script type="text/javascript" src="data/main.js"></script>
     <script type="text/javascript" src="main.js"></script>
 </head>
 <body onload="init()">
 
+<h1 id="title"></h1>
+Statistics:<br/>
+<ol>
+    <li>Types: <span id="typeCount"></span></li>
+    <li>Dependencies: <span id="dependencyCount"></span></li>
+    <li>Projects: <span id="projectCount"></span></li>
+</ol>
 <div id="projects" class="multiColDiv"></div>
 
 </body>
