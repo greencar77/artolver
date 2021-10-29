@@ -15,13 +15,26 @@ function init() {
 
     let depEl = document.getElementById('deps');
     for (const d of project.dependencies) {
-        let depItemEl = document.createElement('li');
-        let depSpan = document.createElement('span');
-        depSpan.setAttribute("onclick", "clickDep(this);");
-        depSpan.textContent = d.name;
-        depItemEl.appendChild(depSpan);
-        depEl.appendChild(depItemEl);
+        appendDependency(depEl, d);
     }
+}
+
+function appendDependency(parent, dependency) {
+    let depItemEl = document.createElement('li');
+
+    let depSpan = document.createElement('span');
+    depSpan.setAttribute("onclick", "clickDep(this);");
+    depSpan.textContent = dependency.name;
+    depItemEl.appendChild(depSpan);
+
+    depItemEl.appendChild(document.createTextNode(' '));
+
+    let mvnRepoEl = document.createElement('a');
+    mvnRepoEl.setAttribute('href', 'https://mvnrepository.com/artifact/' + dependency.name);
+    mvnRepoEl.textContent = '[MVN]';
+    depItemEl.appendChild(mvnRepoEl);
+
+    parent.appendChild(depItemEl);
 }
 
 function getProject(projId) {
