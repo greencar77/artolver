@@ -55,7 +55,7 @@ public class ImportCollector {
 	}
 
 	private Set<String> collectImportsFile(File javaFile) {
-		return readLines(javaFile).stream()
+		return readImportCandidateLines(javaFile).stream()
 				.filter(l -> l.trim().matches("^import(.*)"))
 				.map(importLine -> {
 					String className = importLine.trim().substring("import ".length());
@@ -69,11 +69,25 @@ public class ImportCollector {
 				.collect(toSet());
 	}
 
-	public static List<String> readLines(File file) {
+	public static List<String> readImportCandidateLines(File file) {
 		try {
-			return FileUtils.readLines(file);
+			List<String> result = FileUtils.readLines(file);
+			return getPreludePart(result);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	/**
+	 *
+	 * return code lines up to the first '{' bracket (where java type definition starts, like "public class Alpha() { ..."})
+	 */
+	private static List<String> getPreludePart(List<String> lines) {
+		for (int i = 0; i < lines.size(); i++) {
+			if (lines.get(i).indexOf('{') > -1) {
+				return lines.subList(0, i);
+			}
+		}
+		return lines;
 	}
 }
