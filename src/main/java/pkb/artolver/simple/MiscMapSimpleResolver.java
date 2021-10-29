@@ -37,6 +37,8 @@ public class MiscMapSimpleResolver extends MapSimpleResolver {
 		map("com.auth0/java-jwt", "com.auth0.jwt.");
 		map("com.computop.txms/paygate-util", "com.computop.txms.util.");
 		map("com.dropbox.core/dropbox-core-sdk", "com.dropbox.core.");
+		map("ch.qos.logback/logback-core", "ch.qos.logback.core.");
+		map("ch.qos.logback/logback-classic", "ch.qos.logback.classic.");
 
 		map("commons-codec/commons-codec", "org.apache.commons.codec.");
 		map("commons-collections/commons-collections", "org.apache.commons.collections.");

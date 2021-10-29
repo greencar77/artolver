@@ -274,3 +274,9 @@ name: Google GWT
 id: EVSAFDPJ
 dependencies:
   - com.google.gwt/gwt-user
+---
+name: Logback
+id: 5RDNRR8J
+dependencies:
+  - ch.qos.logback/logback-core
+  - ch.qos.logback/logback-classic
