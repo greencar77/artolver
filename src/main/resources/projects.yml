@@ -47,13 +47,17 @@ id: BVWVWBJ2
 dependencies:
   - org.dom4j/dom4j
 ---
-name: FasterXML Jackson
+name: FasterXML
 id: HRXD62XK
 url: https://github.com/FasterXML
 dependencies:
   - com.fasterxml.jackson.core/jackson-annotations
   - com.fasterxml.jackson.core/jackson-core
   - com.fasterxml.jackson.core/jackson-databind
+  - com.fasterxml.jackson.dataformat/jackson-dataformat-xml
+  - com.fasterxml.jackson.datatype/jackson-datatype-jdk8
+  - com.fasterxml.jackson.datatype/jackson-datatype-jsr310
+  - com.fasterxml/classmate
 ---
 name: Dozer Mapper
 id: SCYYRDCQ
@@ -231,3 +235,42 @@ id: O3JBFIMM
 url: https://sourceforge.net/projects/stripes/
 dependencies:
   - net.sourceforge.stripes/stripes
+---
+name: BeanShell
+id: QSU75BNR
+url: https://github.com/beanshell/beanshell
+dependencies:
+  - org.apache-extras.beanshell/bsh
+  - org.beanshell/bsh
+---
+name: Auth0
+id: QMSWPP6F
+url: https://github.com/auth0
+dependencies:
+  - com.auth0/java-jwt
+---
+name: Computop
+id: 50AAN2DI
+dependencies:
+  - com.computop.txms/paygate-util
+---
+name: Allaire
+id: EGRUY5WO
+dependencies:
+  - com.allaire/wddx
+---
+name: drewnoakes
+id: SM79B9YU
+url: https://github.com/drewnoakes/metadata-extractor
+dependencies:
+  - com.drewnoakes/metadata-extractor
+---
+name: Dropbox
+id: 54ZHYIUO
+dependencies:
+  - com.dropbox.core/dropbox-core-sdk
+---
+name: Google GWT
+id: EVSAFDPJ
+dependencies:
+  - com.google.gwt/gwt-user

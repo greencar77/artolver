@@ -9,9 +9,6 @@ public class MiscMapSimpleResolver extends MapSimpleResolver {
 		map("org.reflections/reflections", "org.reflections.");
 		map("org.jmockit/jmockit", "mockit.");
 		map("com.squareup.retrofit2/retrofit", "retrofit2.");
-		map("com.fasterxml.jackson.core/jackson-annotations", "com.fasterxml.jackson.annotation.");
-		map("com.fasterxml.jackson.core/jackson-core", "com.fasterxml.jackson.core.");
-		map("com.fasterxml.jackson.core/jackson-databind", "com.fasterxml.jackson.databind.");
 		map("com.github.dozermapper/dozer-core", "com.github.dozermapper.core.");
 		map("io.projectreactor/reactor-core", "reactor.util.function.");
 		map("org.hamcrest/hamcrest", "org.hamcrest.");
@@ -35,6 +32,11 @@ public class MiscMapSimpleResolver extends MapSimpleResolver {
 		map("net.bytebuddy/byte-buddy", "net.bytebuddy.");
 		map("com.hierynomus/sshj", "net.schmizz.");
 		map("net.sourceforge.stripes/stripes", "net.sourceforge.stripes.");
+		map("org.apache-extras.beanshell/bsh", "bsh.");
+		map("com.allaire/wddx", "com.allaire.");
+		map("com.auth0/java-jwt", "com.auth0.jwt.");
+		map("com.computop.txms/paygate-util", "com.computop.txms.util.");
+		map("com.dropbox.core/dropbox-core-sdk", "com.dropbox.core.");
 
 		map("commons-codec/commons-codec", "org.apache.commons.codec.");
 		map("commons-collections/commons-collections", "org.apache.commons.collections.");
@@ -43,5 +45,14 @@ public class MiscMapSimpleResolver extends MapSimpleResolver {
 		map("commons-lang/commons-lang", "org.apache.commons.lang.");
 
 		map("org.apache.commons/commons-lang3", "org.apache.commons.lang3.");
+
+		map("com.fasterxml.jackson.core/jackson-annotations", "com.fasterxml.jackson.annotation.");
+		map("com.fasterxml.jackson.core/jackson-core", "com.fasterxml.jackson.core.");
+		map("com.fasterxml.jackson.core/jackson-databind", "com.fasterxml.jackson.databind.");
+		map("com.fasterxml.jackson.dataformat/jackson-dataformat-xml", "com.fasterxml.jackson.dataformat.xml.");
+		map("com.fasterxml.jackson.datatype/jackson-datatype-jdk8", "com.fasterxml.jackson.datatype.jdk8.");
+		map("com.fasterxml.jackson.datatype/jackson-datatype-jsr310", "com.fasterxml.jackson.datatype.jsr310.");
+		map("com.fasterxml/classmate", "com.fasterxml.classmate.");
+
 	}
 }
