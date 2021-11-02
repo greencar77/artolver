@@ -34,6 +34,12 @@ function appendDependency(parent, dependency) {
     mvnRepoEl.textContent = '[MVN]';
     depItemEl.appendChild(mvnRepoEl);
 
+    depItemEl.appendChild(document.createTextNode(' '));
+
+    let countSpan = document.createElement('span');
+    countSpan.textContent = '(' + dependency.typesCount + ')';
+    depItemEl.appendChild(countSpan);
+
     parent.appendChild(depItemEl);
 }
 

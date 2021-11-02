@@ -14,6 +14,7 @@ public class MiscMapSimpleResolver extends MapSimpleResolver {
 		map("org.hamcrest/hamcrest", "org.hamcrest.");
 		map("org.slf4j/slf4j-api", "org.slf4j.");
 		map("com.google.guava/guava", "com.google.common.io.");
+		map("com.google.guava/guava", "com.google.common.");
 		map("com.google.code.gson/gson", "com.google.gson.");
 		map("com.googlecode.libphonenumber/libphonenumber", "com.google.i18n.phonenumbers.");
 		map("io.undertow/undertow-core", "io.undertow.server."); //and other
@@ -39,6 +40,13 @@ public class MiscMapSimpleResolver extends MapSimpleResolver {
 		map("com.dropbox.core/dropbox-core-sdk", "com.dropbox.core.");
 		map("ch.qos.logback/logback-core", "ch.qos.logback.core.");
 		map("ch.qos.logback/logback-classic", "ch.qos.logback.classic.");
+		map("com.worldspan/worldspan-client", "xxclient.");
+		map("com.drewnoakes/metadata-extractor", "com.drew.");
+		map("wsdl4j/wsdl4j", "com.ibm.wsdl.");
+		map("com.lowagie/itext", "com.lowagie.");
+		map("net.sf.saxon2/saxon9-xqj", "com.saxonica.xqj.");
+		map("net.sf.saxon2/saxon9-xqj", "javax.xml.xquery.");
+		map("com.smartgwt/smartgwt", "com.smartgwt.");
 
 		map("commons-codec/commons-codec", "org.apache.commons.codec.");
 		map("commons-collections/commons-collections", "org.apache.commons.collections.");
