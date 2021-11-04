@@ -7,7 +7,8 @@ public class JdkSimpleResolver extends SimpleResolver {
 	public String resolve(String typeName) {
 		if (typeName.startsWith("java.")) {
 			return JDK;
-		} else if (typeName.startsWith("javax.")) {
+		} else if (typeName.startsWith("javax.")
+				&& !typeName.startsWith("javax.xml.soap.")) {
 			return JDK;
 		} else if (typeName.startsWith("com.sun.")) {
 			return JDK;

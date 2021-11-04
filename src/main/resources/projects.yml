@@ -281,3 +281,8 @@ id: 5RDNRR8J
 dependencies:
   - ch.qos.logback/logback-core
   - ch.qos.logback/logback-classic
+---
+name: Jakarta
+id: S5VW0H1Y
+dependencies:
+  - jakarta.xml.soap/jakarta.xml.soap-api

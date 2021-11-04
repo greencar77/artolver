@@ -47,6 +47,8 @@ public class MiscMapSimpleResolver extends MapSimpleResolver {
 		map("net.sf.saxon2/saxon9-xqj", "com.saxonica.xqj.");
 		map("net.sf.saxon2/saxon9-xqj", "javax.xml.xquery.");
 		map("com.smartgwt/smartgwt", "com.smartgwt.");
+		map("com.smartgwt/smartgwt", "com.smartgwt.");
+		map("jakarta.xml.soap/jakarta.xml.soap-api", "javax.xml.soap.");
 
 		map("commons-codec/commons-codec", "org.apache.commons.codec.");
 		map("commons-collections/commons-collections", "org.apache.commons.collections.");
