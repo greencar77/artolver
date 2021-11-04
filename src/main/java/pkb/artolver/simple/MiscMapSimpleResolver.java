@@ -49,6 +49,7 @@ public class MiscMapSimpleResolver extends MapSimpleResolver {
 		map("com.smartgwt/smartgwt", "com.smartgwt.");
 		map("com.smartgwt/smartgwt", "com.smartgwt.");
 		map("jakarta.xml.soap/jakarta.xml.soap-api", "javax.xml.soap.");
+		map("com.sun.istack/istack-commons-runtime", "com.sun.istack.");
 
 		map("commons-codec/commons-codec", "org.apache.commons.codec.");
 		map("commons-collections/commons-collections", "org.apache.commons.collections.");

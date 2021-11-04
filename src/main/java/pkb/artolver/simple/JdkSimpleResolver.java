@@ -10,7 +10,8 @@ public class JdkSimpleResolver extends SimpleResolver {
 		} else if (typeName.startsWith("javax.")
 				&& !typeName.startsWith("javax.xml.soap.")) {
 			return JDK;
-		} else if (typeName.startsWith("com.sun.")) {
+		} else if (typeName.startsWith("com.sun.")
+				&& !typeName.contains(".istack.")) {
 			return JDK;
 		} else if (in(typeName, "org.w3c.dom.", "org.xml.sax.")) {
 			return JDK;
