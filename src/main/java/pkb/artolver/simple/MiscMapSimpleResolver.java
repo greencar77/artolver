@@ -27,8 +27,6 @@ public class MiscMapSimpleResolver extends MapSimpleResolver {
 		map("org.glassfish.jersey.core/jersey-server", "org.glassfish.jersey.server.");
 		map("org.glassfish.hk2/hk2-api", "org.jvnet.hk2.annotations.");
 		map("org.opentest4j/opentest4j", "org.opentest4j.");
-		map("org.xmlunit/xmlunit-assertj", "org.xmlunit.assertj.");
-		map("org.xmlunit/xmlunit-core", "org.xmlunit.diff.");
 		map("com.j2html/j2html", "j2html.");
 		map("net.bytebuddy/byte-buddy", "net.bytebuddy.");
 		map("com.hierynomus/sshj", "net.schmizz.");
@@ -50,6 +48,9 @@ public class MiscMapSimpleResolver extends MapSimpleResolver {
 		map("com.smartgwt/smartgwt", "com.smartgwt.");
 		map("jakarta.xml.soap/jakarta.xml.soap-api", "javax.xml.soap.");
 		map("com.sun.istack/istack-commons-runtime", "com.sun.istack.");
+
+		map("org.xmlunit/xmlunit-assertj", "org.xmlunit.assertj.");
+		map("org.xmlunit/xmlunit-core", "org.xmlunit."); //default
 
 		map("commons-codec/commons-codec", "org.apache.commons.codec.");
 		map("commons-collections/commons-collections", "org.apache.commons.collections.");
